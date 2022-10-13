@@ -15,7 +15,7 @@ namespace TodoList.Controllers
             this.todoRepository = todoRepository;
         }
 
-        [HttpGet]
+        [HttpGet()]
         public async Task<IActionResult> GetAll() => Ok(await todoRepository.GetAll());
 
         [HttpGet("{id}")]
