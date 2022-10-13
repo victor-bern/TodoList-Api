@@ -9,6 +9,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{710239BC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoListTests.Integration", "TodoListTests.Integration\TodoListTests.Integration.csproj", "{C5571394-2343-465D-991A-BCCE436C4E88}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TodoListTests.Unit", "TodoListTests.Unit\TodoListTests.Unit.csproj", "{86BF264D-8B4D-4961-8490-3C4142044D7C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,12 +25,17 @@ Global
 		{C5571394-2343-465D-991A-BCCE436C4E88}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C5571394-2343-465D-991A-BCCE436C4E88}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C5571394-2343-465D-991A-BCCE436C4E88}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86BF264D-8B4D-4961-8490-3C4142044D7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86BF264D-8B4D-4961-8490-3C4142044D7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86BF264D-8B4D-4961-8490-3C4142044D7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86BF264D-8B4D-4961-8490-3C4142044D7C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{C5571394-2343-465D-991A-BCCE436C4E88} = {710239BC-8208-4209-AE8D-7908033B5ADC}
+		{86BF264D-8B4D-4961-8490-3C4142044D7C} = {710239BC-8208-4209-AE8D-7908033B5ADC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E29C01FF-0F47-48C6-A297-913443B62B81}
