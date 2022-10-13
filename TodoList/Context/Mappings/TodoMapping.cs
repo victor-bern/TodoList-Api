@@ -17,7 +17,7 @@ namespace TodoList.Context.Mappings
 
             builder.Property(x => x.Title)
                 .HasColumnName("Title")
-                .HasColumnType("nvarchar")
+                .HasColumnType("text")
                 .IsRequired()
                 .HasMaxLength(120);
 
