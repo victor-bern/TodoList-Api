@@ -19,7 +19,16 @@ namespace TodoList.Controllers
         public async Task<IActionResult> GetAll() => Ok(await todoRepository.GetAll());
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetById(int id) => Ok(await todoRepository.GetById(id));
+        public async Task<IActionResult> GetById(int id)
+        {
+            var todo = await todoRepository.GetById(id);
+            if (todo == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(todo);
+        }
 
         [HttpPost]
         public async Task<IActionResult> SaveTodo([FromBody] Todo todo)
