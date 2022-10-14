@@ -12,6 +12,16 @@ builder.Services.AddDbContext<TodoAppContext>(opt =>
     opt.UseNpgsql(builder.Configuration.GetConnectionString("pgsql"));
 });
 
+var mySpecificOrigin = "TodoWeb";
+builder.Services.AddCors(opt =>
+{
+    opt.AddPolicy(name: mySpecificOrigin, policy =>
+    {
+        policy.WithOrigins("http://localhost:3000")
+        .AllowAnyMethod()
+        .AllowAnyHeader();
+    });
+});
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<ITodoRepository, TodoRepository>();
@@ -25,6 +35,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors(mySpecificOrigin);
 
 app.UseAuthorization();
 

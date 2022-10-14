@@ -49,7 +49,7 @@ namespace TodoListTests.Integration.Controllers
         }
 
         [Test]
-        public async Task SaveTodo_ShouldReturnNoContentWhenSave()
+        public async Task SaveTodo_ShouldReturnOkWhenSave()
         {
             var todo = new Todo
             {
@@ -60,7 +60,7 @@ namespace TodoListTests.Integration.Controllers
 
             var response = await _client.PostAsync("api/v1/todos", new StringContent(stringContent, Encoding.UTF8, "application/json"));
 
-            response.StatusCode.Should().Be(System.Net.HttpStatusCode.NoContent);
+            response.StatusCode.Should().Be(System.Net.HttpStatusCode.OK);
         }
 
         [Test]

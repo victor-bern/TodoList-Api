@@ -36,7 +36,7 @@ namespace TodoList.Controllers
             try
             {
                 await todoRepository.SaveTodo(todo);
-                return NoContent();
+                return Ok(todo);
             }
             catch (Exception)
             {

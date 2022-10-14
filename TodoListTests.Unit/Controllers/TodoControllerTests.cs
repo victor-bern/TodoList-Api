@@ -81,12 +81,12 @@ namespace TodoListTests.Unity.Controllers
 
 
         [Test]
-        public async Task SaveTodoShouldReturnNoContentStatusWhenTodoIsSave()
+        public async Task SaveTodoShouldReturnOkStatusWhenTodoIsSave()
         {
             var todo = new Todo();
             var result = await todoController.SaveTodo(todo);
 
-            result.Should().BeOfType(typeof(NoContentResult));
+            result.Should().BeOfType(typeof(OkObjectResult));
         }
 
 
