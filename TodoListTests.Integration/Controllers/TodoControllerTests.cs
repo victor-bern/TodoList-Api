@@ -76,8 +76,36 @@ namespace TodoListTests.Integration.Controllers
         public async Task EditTodoStatus_ShouldReturnStatusNoContentWhenIdIsValid()
         {
             var response = await _client.PutAsync("api/v1/todos/status/1", null);
-            var res = await _client.GetAsync("api/v1/todos");
-            var content = await res.Content.ReadAsStringAsync();
+
+
+            response.StatusCode.Should().Be(System.Net.HttpStatusCode.NoContent);
+        }
+
+        [Test]
+        public async Task EditTodo_ShouldReturnStatusNotFoundWhenIdIsNotValid()
+        {
+            var todo = new Todo
+            {
+                Title = "Teste2"
+            };
+
+            var stringContent = JsonConvert.SerializeObject(todo);
+            var response = await _client.PutAsync("api/v1/todos/edit/2", new StringContent(stringContent, Encoding.UTF8, "application/json"));
+
+            response.StatusCode.Should().Be(System.Net.HttpStatusCode.NotFound);
+        }
+
+        [Test]
+        [Order(2)]
+        public async Task EditTodo_ShouldReturnStatusNoContentWhenIdIsValid()
+        {
+            var todo = new Todo
+            {
+                Title = "Teste2"
+            };
+
+            var stringContent = JsonConvert.SerializeObject(todo);
+            var response = await _client.PutAsync("api/v1/todos/edit/1", new StringContent(stringContent, Encoding.UTF8, "application/json"));
 
             response.StatusCode.Should().Be(System.Net.HttpStatusCode.NoContent);
         }

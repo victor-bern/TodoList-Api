@@ -68,7 +68,7 @@ namespace TodoList.Controllers
         }
 
         [HttpPut("edit/{id}")]
-        public async Task<IActionResult> EditTodo(int id, [FromBody] string title)
+        public async Task<IActionResult> EditTodo(int id, [FromBody] Todo model)
         {
             try
             {
@@ -78,7 +78,7 @@ namespace TodoList.Controllers
                     return NotFound();
                 }
 
-                todo.Title = title;
+                todo.Title = model.Title;
 
                 await todoRepository.EditTodo(todo);
                 return NoContent();

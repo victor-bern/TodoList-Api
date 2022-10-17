@@ -129,8 +129,9 @@ namespace TodoListTests.Unity.Controllers
         [Test]
         public async Task EditTodoShouldReturnNotFoundWhenIdIsNotValid()
         {
+            var todo = new Todo();
             todoRepositoryMock.Setup(x => x.GetById(It.IsAny<int>())).ReturnsAsync((Todo)null);
-            var result = await todoController.EditTodo(1, "teste");
+            var result = await todoController.EditTodo(1, todo);
 
             result.Should().BeOfType(typeof(NotFoundResult));
         }
@@ -141,7 +142,7 @@ namespace TodoListTests.Unity.Controllers
             var todo = new Todo();
             todoRepositoryMock.Setup(x => x.GetById(It.IsAny<int>())).ReturnsAsync(todo);
             todoRepositoryMock.Setup(x => x.EditTodo(It.IsAny<Todo>())).ThrowsAsync(new Exception());
-            var result = await todoController.EditTodo(1, "teste");
+            var result = await todoController.EditTodo(1, todo);
 
             var objectResult = (StatusCodeResult)result;
 
@@ -151,13 +152,10 @@ namespace TodoListTests.Unity.Controllers
         [Test]
         public async Task EditTodosShouldReturnNoContentStatusWhenTodoStatusIsEdited()
         {
-            todoRepositoryMock.Setup(x => x.GetById(It.IsAny<int>())).ReturnsAsync(new Todo
-            {
-                Id = 1,
-                Title = "Teste",
-                IsDone = true,
-            });
-            var result = await todoController.EditTodo(1, "teste");
+            var todo = new Todo();
+
+            todoRepositoryMock.Setup(x => x.GetById(It.IsAny<int>())).ReturnsAsync(todo);
+            var result = await todoController.EditTodo(1, todo);
 
             result.Should().BeOfType(typeof(NoContentResult));
         }
