@@ -67,6 +67,28 @@ namespace TodoList.Controllers
 
         }
 
+        [HttpPut("edit/{id}")]
+        public async Task<IActionResult> EditTodo(int id, [FromBody] string title)
+        {
+            try
+            {
+                var todo = await todoRepository.GetById(id);
+                if (todo == null)
+                {
+                    return NotFound();
+                }
+
+                todo.Title = title;
+
+                await todoRepository.EditTodo(todo);
+                return NoContent();
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+        }
+
         [HttpDelete("delete/{id}")]
         public async Task<IActionResult> DeleteTodo(int id)
         {
